@@ -1,0 +1,586 @@
+meta:
+  currency: EUR
+  unit: EUR_per_m2
+  date_built: '2026-02-07'
+  scenarios:
+  - low
+  - mid
+  - high
+  scenario_labels:
+    low: Bajo
+    mid: Medio
+    high: Alto
+  notes: Rangos paramétricos por capítulo. Para 'uso del edificio' se aplican multiplicadores
+    (arquitectura/MEP/total) calibrables en este YAML.
+modules:
+  obra_nueva_edificio:
+    label: Nueva edificación (edificio completo)
+    measurement: m² construidos (sobre/bajo rasante separados).
+    use_profiles:
+      residencial:
+        label: Residencial
+        arch: 0.95
+        mep: 0.95
+        overall: 0.95
+      oficinas:
+        label: Oficinas
+        arch: 1.0
+        mep: 1.0
+        overall: 1.0
+      hotel:
+        label: Hotel
+        arch: 1.1
+        mep: 1.2
+        overall: 1.15
+      sanitario:
+        label: Sanitario
+        arch: 1.15
+        mep: 1.35
+        overall: 1.25
+      educativo:
+        label: Educativo
+        arch: 1.0
+        mep: 1.05
+        overall: 1.03
+      industrial_logistica:
+        label: Industrial/Logística
+        arch: 0.85
+        mep: 0.9
+        overall: 0.87
+      retail:
+        label: Retail/Comercial
+        arch: 1.0
+        mep: 1.1
+        overall: 1.05
+    chapters:
+    - key: estructura
+      label: Estructura
+      basis: base
+      above:
+        low: 170
+        mid: 220
+        high: 280
+      below:
+        low: 190
+        mid: 250
+        high: 320
+    - key: envolvente
+      label: Envolvente y cerramientos
+      basis: base
+      above:
+        low: 180
+        mid: 260
+        high: 360
+      below:
+        low: 80
+        mid: 120
+        high: 170
+    - key: particiones
+      label: Particiones y falsos techos
+      basis: base
+      above:
+        low: 90
+        mid: 140
+        high: 210
+      below:
+        low: 40
+        mid: 70
+        high: 110
+    - key: acabados
+      label: Acabados (solados, pintura, etc.)
+      basis: base
+      above:
+        low: 140
+        mid: 220
+        high: 340
+      below:
+        low: 70
+        mid: 120
+        high: 200
+    - key: carpinterias
+      label: Carpinterías y cerrajería
+      basis: base
+      above:
+        low: 120
+        mid: 170
+        high: 250
+      below:
+        low: 50
+        mid: 80
+        high: 120
+    - key: cubierta_imper
+      label: Cubierta e impermeabilizaciones
+      basis: base
+      above:
+        low: 55
+        mid: 80
+        high: 120
+      below:
+        low: 0
+        mid: 0
+        high: 0
+    - key: mep_hvac
+      label: MEP - HVAC (frío/calor)
+      basis: base
+      above:
+        low: 150
+        mid: 240
+        high: 360
+      below:
+        low: 60
+        mid: 90
+        high: 140
+    - key: mep_vent
+      label: MEP - Ventilación
+      basis: base
+      above:
+        low: 45
+        mid: 70
+        high: 110
+      below:
+        low: 20
+        mid: 30
+        high: 50
+    - key: mep_elec
+      label: MEP - Eléctrica e iluminación
+      basis: base
+      above:
+        low: 110
+        mid: 170
+        high: 250
+      below:
+        low: 60
+        mid: 90
+        high: 140
+    - key: mep_font
+      label: MEP - Fontanería/ACS
+      basis: base
+      above:
+        low: 55
+        mid: 85
+        high: 130
+      below:
+        low: 35
+        mid: 55
+        high: 85
+    - key: mep_san
+      label: MEP - Saneamiento/pluviales
+      basis: base
+      above:
+        low: 35
+        mid: 55
+        high: 85
+      below:
+        low: 45
+        mid: 70
+        high: 110
+    - key: mep_pci
+      label: MEP - PCI
+      basis: base
+      above:
+        low: 55
+        mid: 85
+        high: 140
+      below:
+        low: 35
+        mid: 55
+        high: 90
+    - key: mep_tele
+      label: MEP - Telecom/red
+      basis: base
+      above:
+        low: 25
+        mid: 40
+        high: 70
+      below:
+        low: 10
+        mid: 15
+        high: 30
+    - key: mep_seg
+      label: MEP - Seguridad
+      basis: base
+      above:
+        low: 20
+        mid: 35
+        high: 60
+      below:
+        low: 10
+        mid: 15
+        high: 25
+    - key: mep_bms
+      label: MEP - BMS/Control
+      basis: base
+      above:
+        low: 15
+        mid: 30
+        high: 55
+      below:
+        low: 5
+        mid: 10
+        high: 20
+    - key: urbanizacion
+      label: Urbanización/entorno inmediato (si aplica)
+      basis: optional
+      above:
+        low: 30
+        mid: 50
+        high: 80
+      below:
+        low: 0
+        mid: 0
+        high: 0
+    defaults:
+      indirects_pct:
+        low: 0.12
+        mid: 0.14
+        high: 0.16
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.1
+        mid: 0.12
+        high: 0.15
+      contingency_pct:
+        low: 0.05
+        mid: 0.08
+        high: 0.12
+  reposicionamiento_edificio:
+    label: Reposicionamiento (rehabilitación integral / modernización)
+    measurement: m² construidos (sobre/bajo rasante separados).
+    use_profiles:
+      residencial:
+        label: Residencial
+        arch: 0.95
+        mep: 0.95
+        overall: 0.95
+      oficinas:
+        label: Oficinas
+        arch: 1.0
+        mep: 1.0
+        overall: 1.0
+      hotel:
+        label: Hotel
+        arch: 1.1
+        mep: 1.2
+        overall: 1.15
+      sanitario:
+        label: Sanitario
+        arch: 1.15
+        mep: 1.35
+        overall: 1.25
+      educativo:
+        label: Educativo
+        arch: 1.0
+        mep: 1.05
+        overall: 1.03
+      industrial_logistica:
+        label: Industrial/Logística
+        arch: 0.85
+        mep: 0.9
+        overall: 0.87
+      retail:
+        label: Retail/Comercial
+        arch: 1.0
+        mep: 1.1
+        overall: 1.05
+    chapters:
+    - key: demoliciones
+      label: Demoliciones y desmontajes
+      basis: base
+      above:
+        low: 60
+        mid: 90
+        high: 130
+      below:
+        low: 80
+        mid: 120
+        high: 170
+    - key: estructura_ref
+      label: Refuerzos/estructura (si aplica)
+      basis: optional
+      above:
+        low: 40
+        mid: 80
+        high: 140
+      below:
+        low: 60
+        mid: 110
+        high: 180
+    - key: envolvente_mej
+      label: Mejora envolvente y carpinterías
+      basis: base
+      above:
+        low: 220
+        mid: 320
+        high: 450
+      below:
+        low: 60
+        mid: 100
+        high: 160
+    - key: acabados
+      label: Acabados y redistribución
+      basis: base
+      above:
+        low: 220
+        mid: 320
+        high: 480
+      below:
+        low: 120
+        mid: 180
+        high: 260
+    - key: mep_renov
+      label: Renovación MEP (HVAC+eléctrica+font/san+PCI+tele)
+      basis: base
+      above:
+        low: 420
+        mid: 620
+        high: 900
+      below:
+        low: 260
+        mid: 380
+        high: 560
+    - key: eficiencia
+      label: Eficiencia energética/renovables (si aplica)
+      basis: optional
+      above:
+        low: 40
+        mid: 80
+        high: 150
+      below:
+        low: 0
+        mid: 0
+        high: 0
+    - key: bms
+      label: BMS/monitorización (si aplica)
+      basis: optional
+      above:
+        low: 20
+        mid: 40
+        high: 80
+      below:
+        low: 10
+        mid: 20
+        high: 40
+    defaults:
+      intervention_multiplier:
+        ligero: 0.85
+        medio: 1.0
+        intensivo: 1.2
+      indirects_pct:
+        low: 0.14
+        mid: 0.16
+        high: 0.18
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.12
+        mid: 0.14
+        high: 0.17
+      contingency_pct:
+        low: 0.1
+        mid: 0.15
+        high: 0.2
+  reforma_piso:
+    label: Reforma de piso (vivienda)
+    measurement: m² útiles (con opción conversión a construidos).
+    chapters:
+    - key: demoliciones
+      label: Demoliciones/retirada
+      basis: base
+      single:
+        low: 35
+        mid: 55
+        high: 80
+    - key: albanileria
+      label: Albañilería/redistribución
+      basis: base
+      single:
+        low: 90
+        mid: 140
+        high: 210
+    - key: carpinterias
+      label: Carpinterías
+      basis: base
+      single:
+        low: 70
+        mid: 110
+        high: 170
+    - key: acabados
+      label: Acabados
+      basis: base
+      single:
+        low: 140
+        mid: 220
+        high: 340
+    - key: cocina_banos
+      label: Cocina y baños
+      basis: base
+      single:
+        low: 160
+        mid: 240
+        high: 380
+    - key: mep
+      label: Instalaciones (eléctrica+font/san+clima si aplica)
+      basis: base
+      single:
+        low: 140
+        mid: 220
+        high: 340
+    defaults:
+      level_multiplier:
+        parcial: 0.7
+        integral: 1.0
+        integral_plus: 1.25
+      indirects_pct:
+        low: 0.1
+        mid: 0.12
+        high: 0.14
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.08
+        mid: 0.1
+        high: 0.12
+      contingency_pct:
+        low: 0.06
+        mid: 0.1
+        high: 0.14
+  reforma_local:
+    label: Reforma de local (obra civil + adecuación)
+    measurement: m² útiles (con opción conversión a construidos).
+    chapters:
+    - key: obra_civil
+      label: Obra civil y acabados
+      basis: base
+      single:
+        low: 160
+        mid: 240
+        high: 380
+    - key: mep
+      label: MEP (eléctrica+clima+vent+font/san+PCI+tele)
+      basis: base
+      single:
+        low: 220
+        mid: 340
+        high: 520
+    - key: adecuacion
+      label: Adecuación normativa / accesibilidad / PCI
+      basis: base
+      single:
+        low: 40
+        mid: 70
+        high: 120
+    defaults:
+      intervention_multiplier:
+        ligera: 0.8
+        media: 1.0
+        intensiva: 1.25
+      indirects_pct:
+        low: 0.12
+        mid: 0.14
+        high: 0.16
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.1
+        mid: 0.12
+        high: 0.15
+      contingency_pct:
+        low: 0.08
+        mid: 0.12
+        high: 0.18
+  fitout_oficinas:
+    label: Fit-out de oficinas (interior)
+    measurement: m² útiles (workplace).
+    chapters:
+    - key: particiones
+      label: Particiones/phonebooths/vidrios
+      basis: base
+      single:
+        low: 160
+        mid: 230
+        high: 320
+    - key: techos
+      label: Falsos techos
+      basis: base
+      single:
+        low: 70
+        mid: 100
+        high: 150
+    - key: acabados
+      label: Acabados
+      basis: base
+      single:
+        low: 170
+        mid: 240
+        high: 330
+    - key: mep_interiores
+      label: MEP interior (ilum+fuerza+datos+clima/vent)
+      basis: base
+      single:
+        low: 260
+        mid: 360
+        high: 520
+    - key: mobiliario
+      label: Mobiliario (opcional)
+      basis: optional
+      single:
+        low: 120
+        mid: 200
+        high: 350
+    defaults:
+      include_furniture: false
+      indirects_pct:
+        low: 0.1
+        mid: 0.12
+        high: 0.14
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.08
+        mid: 0.1
+        high: 0.12
+      contingency_pct:
+        low: 0.06
+        mid: 0.08
+        high: 0.12
+  fitout_local_por_uso:
+    label: Fit-out de local por uso
+    measurement: m² útiles.
+    use_multipliers:
+      retail: 1.0
+      restauracion: 1.35
+      fitness: 1.1
+      clinica: 1.45
+      otros: 1.0
+    chapters:
+    - key: obra_civil
+      label: Obra civil + acabados
+      basis: base
+      single:
+        low: 220
+        mid: 320
+        high: 480
+    - key: mep
+      label: MEP interior
+      basis: base
+      single:
+        low: 260
+        mid: 400
+        high: 620
+    - key: equipamiento
+      label: Equipamiento específico (según uso)
+      basis: optional
+      single:
+        low: 80
+        mid: 140
+        high: 240
+    defaults:
+      indirects_pct:
+        low: 0.12
+        mid: 0.14
+        high: 0.16
+      gg_bi_pct: 0.19
+      soft_costs_pct:
+        low: 0.1
+        mid: 0.12
+        high: 0.15
+      contingency_pct:
+        low: 0.08
+        mid: 0.12
+        high: 0.18

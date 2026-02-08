@@ -1,0 +1,25 @@
+city,location_factor
+Madrid,1.05
+Barcelona,1.08
+Valencia,0.98
+Sevilla,0.97
+Málaga,1.0
+Bilbao,1.06
+Zaragoza,0.96
+Valladolid,0.95
+Alicante,0.98
+Murcia,0.97
+Palma,1.03
+Las Palmas,1.05
+Santa Cruz de Tenerife,1.05
+A Coruña,1.02
+Vigo,1.0
+San Sebastián,1.08
+Pamplona,1.03
+Oviedo,0.98
+Santander,1.01
+Granada,0.97
+Córdoba,0.96
+Salamanca,0.95
+Toledo,0.96
+Custom,1.0
